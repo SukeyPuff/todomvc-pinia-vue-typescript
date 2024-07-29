@@ -1,3 +1,4 @@
+import 'todomvc-app-css/index.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'

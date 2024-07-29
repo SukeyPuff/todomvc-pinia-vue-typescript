@@ -3,7 +3,8 @@ import Header from './components/Header.vue'
 </script>
 
 <template>
-  <div>
+  <div class="todoapp">
+    <Header />
   </div>
 </template>
 

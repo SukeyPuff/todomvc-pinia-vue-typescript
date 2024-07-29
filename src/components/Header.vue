@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import TodoTextInput from './TodoTextInput.vue'
+
+function onSave() {
+
+}
 </script>
 
 <template>
-  <header>
+  <header class="header">
     <h1>todos</h1>
-    <TodoTextInput />
+    <TodoTextInput
+      :on-save="onSave"
+      :new-todo="true"
+      placeholder="What needs to be done?"/>
   </header>
 </template>
 
