@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
+
 </script>
 
 <template>
-  <div>
-
-  </div>
+  <input type="text">
 </template>
 
 <style scoped>
+
 </style>
