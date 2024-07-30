@@ -4,6 +4,6 @@ export type Todo = {
   completed: boolean;
 }
 
-export type TodoList = {
+export type TodoData = {
   todoList: Todo[]
 }

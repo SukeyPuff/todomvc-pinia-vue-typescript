@@ -1,28 +1,31 @@
 <script setup lang="ts">
-import Header from './components/Header.vue'
 import { storeToRefs } from 'pinia';
-import {useTodoStore} from '@/stores/todo'
+import { useTodoStore } from '@/stores/todo'
+import Header from './components/Header.vue'
+import MainSection from './components/MainSection.vue'
+import type { Todo } from './stores/model';
 
 const todoStore = useTodoStore()
-
-const {todoList} = storeToRefs(todoStore)
+const { todoList } = storeToRefs(todoStore)
 const {
   addTodo,
-  deleteTodo
+  deleteTodo,
+  editTodo,
+  completeTodo,
+  completeAll,
+  clearCompleted
 } = todoStore
-
-function handleAddTodo(text: string) {
-  addTodo({text, completed: false})
-  console.log(todoList.value);
-  
-}
 </script>
 
 <template>
   <div class="todoapp">
-    <Header @add-todo="handleAddTodo" />
+    <Header @add-todo="(text: string) => addTodo({text, completed: false})" />
+    <MainSection
+      :todos="todoList"
+      @edit-todo="(todoItem: Todo, text: string) => editTodo(todoItem, text)"
+      @delete-todo="(todoItem: Todo) => deleteTodo(todoItem)"
+      @complete-todo="(todoItem: Todo) => completeTodo(todoItem)"/>
   </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

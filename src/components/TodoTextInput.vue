@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref} from 'vue' 
+import {ref, onMounted} from 'vue' 
 
 const props = defineProps<{
   text?: string;
@@ -9,20 +9,23 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'onSave', text: string): void
+  (e: 'onSave', text: string): void,
 }>()
 
 const text = ref('')
+onMounted(() => {
+  text.value = props.text || ''
+})
 
-function handleBlur() {
-  if (!props.newTodo) {
+function handleBlur() {  
+  if (!props.newTodo) {    
     emit('onSave', text.value)
   }
 }
 
 function handleSubmit() {
   const trimText = text.value.trim()
-  emit('onSave', text.value)
+  emit('onSave', trimText)
   if (props.newTodo) {
     text.value = ''
   }
@@ -36,7 +39,7 @@ function handleSubmit() {
     :placeholder="placeholder"
     :autofocus="true"
     v-model="text"
-    @onblur="handleBlur"
+    @blur="handleBlur"
     @keyup.enter="handleSubmit">
 </template>
 
