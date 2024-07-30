@@ -8,15 +8,15 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'editTodo', todoItem: Todo, text: string): void;
-  (e: 'deleteTodo', todoItem: Todo): void;
-  (e: 'completeTodo', todoItem: Todo): void;
+  (e: 'editTodo', t: Todo, text: string): void;
+  (e: 'deleteTodo', t: Todo): void;
+  (e: 'completeTodo', t: Todo): void;
 }>()
 
 const editing = ref(false)
 
 function handleDoubleClick() {
-  editing.value = true  
+  editing.value = true
 }
 
 function handleSave(text: string) {
@@ -31,6 +31,10 @@ function handleSave(text: string) {
 
 function handleCompleteTodo() {
   emit('completeTodo', props.todo)
+}
+
+function handleDeleteTodo() {
+  emit('deleteTodo', props.todo)
 }
 </script>
 
@@ -52,7 +56,10 @@ function handleCompleteTodo() {
       <label @dblclick="handleDoubleClick">
         {{ todo.text }}
       </label>
-      <button class="destroy"></button>
+      <button
+        class="destroy"
+        @click="handleDeleteTodo">
+      </button>
     </div>
   </li>
 </template>

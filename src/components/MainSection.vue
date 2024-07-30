@@ -7,9 +7,9 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'editTodo', todoItem: Todo, text: string): void;
-  (e: 'deleteTodo', todoItem: Todo): void;
-  (e: 'completeTodo', todoItem: Todo): void;
+  (e: 'editTodo', t: Todo, text: string): void;
+  (e: 'deleteTodo', t: Todo): void;
+  (e: 'completeTodo', t: Todo): void;
 }>()
 
 </script>
@@ -21,9 +21,9 @@ const emit = defineEmits<{
         v-for="todo in todos"
         :key="todo.id"
         :todo="todo"
-        @edit-todo="(todoItem, text) => $emit('editTodo', todoItem, text)"
-        @delete-todo="(todoItem: Todo) => $emit('deleteTodo', todoItem)"
-        @complete-todo="(todoItem: Todo) => $emit('completeTodo', todoItem)"/>
+        @edit-todo="(t: Todo, text: string) => $emit('editTodo', t, text)"
+        @delete-todo="(t: Todo) => $emit('deleteTodo', t)"
+        @complete-todo="(t: Todo) => $emit('completeTodo', t)"/>
     </ul>
   </section>
 </template>

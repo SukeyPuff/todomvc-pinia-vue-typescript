@@ -22,9 +22,9 @@ const {
     <Header @add-todo="(text: string) => addTodo({text, completed: false})" />
     <MainSection
       :todos="todoList"
-      @edit-todo="(todoItem: Todo, text: string) => editTodo(todoItem, text)"
-      @delete-todo="(todoItem: Todo) => deleteTodo(todoItem)"
-      @complete-todo="(todoItem: Todo) => completeTodo(todoItem)"/>
+      @edit-todo="(t: Todo, text: string) => editTodo(t, text)"
+      @delete-todo="(t: Todo) => deleteTodo(t)"
+      @complete-todo="(t: Todo) => completeTodo(t)"/>
   </div>
 </template>
 
